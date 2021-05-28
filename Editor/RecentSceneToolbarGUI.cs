@@ -30,7 +30,7 @@ namespace RecentSceneToolbar {
 		}
 
 		internal static void OnToolbarGUI() {
-			GUILayout.Space(40f);
+			GUILayout.Space(80f);
 			string title = string.IsNullOrEmpty(s_CurrentSceneName) ? "Unknwon Scene" : s_CurrentSceneName;
 			GUIStyle style = new GUIStyle(GUI.skin.button);
 			var tex = EditorGUIUtility.IconContent(@"d_BuildSettings.SelectedIcon").image;

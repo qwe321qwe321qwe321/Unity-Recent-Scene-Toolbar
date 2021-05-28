@@ -15,7 +15,6 @@ namespace RecentSceneToolbar {
 		public static RecentSceneList Instance {
 			get {
 				if (!s_Instance) {
-					AssetDatabase.Refresh();
 					var guids = AssetDatabase.FindAssets("t: RecentSceneList");
 					if (guids.Length <= 0) {
 						Debug.Log("Can't find any RecentSceneList.asset. Trying to create one...");
