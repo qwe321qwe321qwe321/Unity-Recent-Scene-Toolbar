@@ -21,5 +21,5 @@ THE HARDEST WAY EVER
 
   * The `.gitignore` in `Editor` folder is used to prevent git tracking `RecentSceneList.asset` which always change when you switch scene.
 
-* The toolbar UI solution is by https://github.com/marijnz/unity-toolbar-extender.
+* The toolbar UI solution is by https://github.com/marijnz/unity-toolbar-extender. (it's only proven to work up to (at least) Unity 2020.1.)
 * Editor icons: https://github.com/nukadelic/UnityEditorIcons
