@@ -1,5 +1,8 @@
 # Unity-Recent-Scene-Toolbar
 Add Recent Scene button to quickly access recent scenes.
+
+The maximum number is 10 by default. (By the const value in `RecentSceneList.cs`)
+
 ![](./img~/demo.gif)
 
 # Installation
@@ -19,3 +22,4 @@ THE HARDEST WAY EVER
   * The `.gitignore` in `Editor` folder is used to prevent git tracking `RecentSceneList.asset` which always change when you switch scene.
 
 * The toolbar UI solution is by https://github.com/marijnz/unity-toolbar-extender.
+* Editor icons: https://github.com/nukadelic/UnityEditorIcons
