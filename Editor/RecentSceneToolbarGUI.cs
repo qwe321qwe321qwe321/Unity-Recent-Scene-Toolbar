@@ -26,7 +26,6 @@ namespace RecentSceneToolbar {
 		private static void OnReloadScripts() {
 			var currentScene = EditorSceneManager.GetActiveScene();
 			s_CurrentSceneName = $"{currentScene.name}.unity";
-			RecentSceneList.Instance.Add(currentScene);
 		}
 
 		internal static void OnToolbarGUI() {
@@ -36,6 +35,8 @@ namespace RecentSceneToolbar {
 			var tex = EditorGUIUtility.IconContent(@"d_BuildSettings.SelectedIcon").image;
 			style.stretchWidth = false;
 			if (GUILayout.Button(new GUIContent(title, tex, $"Switch recent scenes"), style)) {
+				var currentScene = EditorSceneManager.GetActiveScene();
+				RecentSceneList.Instance.Add(currentScene);
 				PopupRecentScene();
 			}
 		}
