@@ -1,0 +1,19 @@
+{
+    "name": "com.pedev.unity-recentscene-toolbar",
+    "version": "1.0.0",
+    "displayName": "RecentScene Toolbar",
+    "description": "Add Recent Scene to Unity toolbar to quickly access recent scenes.",
+    "unity": "2020.1",
+    "dependencies": {},
+    "keywords": [
+      "toolbar",
+      "UI",
+      "recent scene",
+      "button"
+    ],
+    "author": {
+      "name": "PeDev",
+      "email": "aegis321123@gmail.com",
+      "url": "https://github.com/qwe321qwe321qwe321/Unity-RecentScene-Toolbar"
+    }
+  }
