@@ -1,4 +1,4 @@
-# Unity-RecentScene-Toolbar
+# Unity-Recent-Scene-Toolbar
 Add Recent Scene button to quickly access recent scenes.
 ![](./img~/demo.gif)
 
