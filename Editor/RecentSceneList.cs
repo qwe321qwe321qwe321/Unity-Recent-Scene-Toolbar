@@ -8,28 +8,44 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace RecentSceneToolbar {
-	public class RecentSceneList : ScriptableObject {
+	internal class RecentSceneList : ScriptableObject {
 		public const int MaxRecentSceneCount = 10;
 
 		private static RecentSceneList s_Instance;
 		public static RecentSceneList Instance {
 			get {
 				if (!s_Instance) {
-					var guids = AssetDatabase.FindAssets($"t: RecentSceneList");
+					AssetDatabase.Refresh();
+					var guids = AssetDatabase.FindAssets("t: RecentSceneList");
 					if (guids.Length <= 0) {
-						Debug.Log("Cannot find any RecentSceneList.asset. Trying to create one...");
-						var scriptGuids = AssetDatabase.FindAssets($"t: script RecentSceneList");
+						Debug.Log("Can't find any RecentSceneList.asset. Trying to create one...");
+						string newInstancePath = "";
+
+						// Find RecentSceneList.cs
+						string[] scriptGuids = AssetDatabase.FindAssets("t: script RecentSceneList");
 						if (scriptGuids.Length <= 0) {
-							Debug.LogWarning("Cannot find RecentSceneList.cs!");
+							Debug.LogWarning("Can't find RecentSceneList.cs. Trying to create by default path...");
 						} else {
 							string scriptPath = AssetDatabase.GUIDToAssetPath(scriptGuids[0]);
-							string path = scriptPath.Replace(".cs", ".asset");
-							var newInstance = ScriptableObject.CreateInstance<RecentSceneList>();
-							AssetDatabase.CreateAsset(newInstance, path);
-							Debug.Log($"Created {path}!");
-							s_Instance = AssetDatabase.LoadAssetAtPath<RecentSceneList>(path);
-
+							if (scriptPath.StartsWith("Assets/")) {
+								newInstancePath = scriptPath.Replace(".cs", ".asset");
+							}
 						}
+
+						// If cannot find scripts or the path is not in Assets/
+						if (string.IsNullOrEmpty(newInstancePath)) {
+							const string defaultFolder = "Assets/Recent-Scene-Toolbar-Config/Editor";
+							const string defaultPath = defaultFolder + "/RecentSceneList.asset";
+							if (!Directory.Exists(defaultFolder)) {
+								Directory.CreateDirectory(defaultFolder);
+							}
+							newInstancePath = defaultPath;
+						}
+						// Create instance.
+						var newInstance = ScriptableObject.CreateInstance<RecentSceneList>();
+						AssetDatabase.CreateAsset(newInstance, newInstancePath);
+						Debug.Log($"Created {newInstancePath}!");
+						s_Instance = AssetDatabase.LoadAssetAtPath<RecentSceneList>(newInstancePath);
 					} else {
 						string path = AssetDatabase.GUIDToAssetPath(guids[0]);
 						s_Instance = AssetDatabase.LoadAssetAtPath<RecentSceneList>(path);
