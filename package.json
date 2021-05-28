@@ -1,5 +1,5 @@
 {
-    "name": "com.pedev.unity-recentscene-toolbar",
+    "name": "com.pedev.unity-recent-scene-toolbar",
     "version": "1.0.0",
     "displayName": "Recent Scene Toolbar",
     "description": "Add Recent Scene to Unity toolbar to quickly access recent scenes.",
