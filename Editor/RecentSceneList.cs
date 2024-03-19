@@ -33,7 +33,7 @@ namespace RecentSceneToolbar {
 
 						// If cannot find scripts or the path is not in Assets/
 						if (string.IsNullOrEmpty(newInstancePath)) {
-							const string defaultFolder = "Assets/Recent-Scene-Toolbar-Config/Editor";
+							const string defaultFolder = "Assets/Plugins/RecentSceneToolbar/Editor";
 							const string defaultPath = defaultFolder + "/RecentSceneList.asset";
 							if (!Directory.Exists(defaultFolder)) {
 								Directory.CreateDirectory(defaultFolder);
