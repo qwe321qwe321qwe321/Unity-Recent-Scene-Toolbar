@@ -1,6 +1,6 @@
 # unity-toolbar-extender
 
-Extend the Unity Toolbar with your own UI code. Please note that it's quite hacky as the code is relying on reflection to access Unity's internal code. It might not work anymore with a new Unity update but is proven to work up to (at least) Unity 2020.1.
+Extend the Unity Toolbar with your own UI code. Please note that it's quite hacky as the code is relying on reflection to access Unity's internal code. It might not work anymore with a new Unity update but is proven to work up to (at least) Unity 2021.2.
 
 Add buttons to quickly access scenes, add sliders, toggles, anything. 
 
@@ -42,7 +42,3 @@ This example code is shown in action in the gif below. Just hook up your GUI met
 
 
 ![Imgur](https://i.imgur.com/DDNfbHW.gif)
-
-
-## How is it done
-The current solution is done by https://github.com/OndrejPetrzilka and uses Unity's new UIElements code and reflection to hook up to the Toolbar's OnGUI callback.

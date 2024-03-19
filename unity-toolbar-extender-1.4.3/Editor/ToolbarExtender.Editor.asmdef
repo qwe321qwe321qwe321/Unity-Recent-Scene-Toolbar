@@ -1,5 +1,5 @@
 {
-    "name": "RecentSceneToolbar",
+    "name": "ToolbarExtender.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
@@ -10,6 +10,5 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+    "versionDefines": []
 }
