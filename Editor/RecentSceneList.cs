@@ -85,11 +85,13 @@ namespace RecentSceneToolbar {
 			}
 		}
 
-		public void LoadScene(int index) {
+		public void LoadScene(int index, bool additive = false) {
 			string guid = m_List[index];
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			if (!PathIsValid(path)) return;
-			SwitchSceneHelper.StartScene(path);
+			if (!PathIsValid(path)) {
+				return;
+			}
+			SwitchSceneHelper.StartScene(path, additive);
 		}
 
 		public void RemoveInvalid() {

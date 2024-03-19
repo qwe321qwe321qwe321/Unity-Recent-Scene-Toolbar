@@ -32,30 +32,40 @@ namespace RecentSceneToolbar {
 			GUILayout.Space(80f);
 			string title = string.IsNullOrEmpty(s_CurrentSceneName) ? "Unknown Scene" : s_CurrentSceneName;
 			GUIStyle style = new GUIStyle(GUI.skin.button);
-			Texture tex = EditorGUIUtility.IconContent(@"d_BuildSettings.SelectedIcon").image;
+			var sceneIconTex = EditorGUIUtility.IconContent(@"d_BuildSettings.SelectedIcon").image;
 			style.stretchWidth = false;
-			if (GUILayout.Button(new GUIContent(title, tex, $"Switch recent scenes"), style)) {
-				var currentScene = EditorSceneManager.GetActiveScene();
-				RecentSceneList.Instance.Add(currentScene);
-				PopupRecentScene();
+			if (GUILayout.Button(new GUIContent(title, sceneIconTex, $"Switch recent scenes"), style)) {
+				PopupRecentScene(
+					(sceneIndex) => {
+						RecentSceneList.Instance.LoadScene(sceneIndex);
+					});
+			}
+			
+			
+			var plusButtonTex = EditorGUIUtility.IconContent(@"d_ol_plus_act").image;
+			if (GUILayout.Button(new GUIContent(null, plusButtonTex, $"Additively load recent scenes"), style)) {
+				PopupRecentScene(
+					(sceneIndex) => {
+						RecentSceneList.Instance.LoadScene(sceneIndex, true);
+					});
 			}
 		}
 
-		private static void PopupRecentScene() {
+		private static void PopupRecentScene(System.Action<int> onSceneSelected) {
 			var menu = new GenericMenu();
 			var rs = RecentSceneList.Instance;
 			rs.RemoveInvalid();
-			var count = rs.Count;
+			int count = rs.Count;
 			if (count <= 1) {
 				menu.AddDisabledItem(new GUIContent("Empty"));
 			}
 			// Ignore the first one.
 			for (int i = 1; i < count; i++) {
-				var index = i;
-				var name = rs[i];
+				int index = i;
+				string name = rs[i];
 				if (!string.IsNullOrEmpty(name)) {
 					var label = $"{i}. {name}";
-					menu.AddItem(new GUIContent(label), false, () => { RecentSceneList.Instance.LoadScene(index); });
+					menu.AddItem(new GUIContent(label), false, () => { onSceneSelected.Invoke(index); });
 				} else {
 					menu.AddDisabledItem(new GUIContent($"{i}. None"));
                 }
