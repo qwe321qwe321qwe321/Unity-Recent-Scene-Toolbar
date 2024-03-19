@@ -24,15 +24,15 @@ namespace RecentSceneToolbar {
 
 		[UnityEditor.Callbacks.DidReloadScripts]
 		private static void OnReloadScripts() {
-			var currentScene = EditorSceneManager.GetActiveScene();
+			Scene currentScene = EditorSceneManager.GetActiveScene();
 			s_CurrentSceneName = $"{currentScene.name}.unity";
 		}
 
 		internal static void OnToolbarGUI() {
 			GUILayout.Space(80f);
-			string title = string.IsNullOrEmpty(s_CurrentSceneName) ? "Unknwon Scene" : s_CurrentSceneName;
+			string title = string.IsNullOrEmpty(s_CurrentSceneName) ? "Unknown Scene" : s_CurrentSceneName;
 			GUIStyle style = new GUIStyle(GUI.skin.button);
-			var tex = EditorGUIUtility.IconContent(@"d_BuildSettings.SelectedIcon").image;
+			Texture tex = EditorGUIUtility.IconContent(@"d_BuildSettings.SelectedIcon").image;
 			style.stretchWidth = false;
 			if (GUILayout.Button(new GUIContent(title, tex, $"Switch recent scenes"), style)) {
 				var currentScene = EditorSceneManager.GetActiveScene();

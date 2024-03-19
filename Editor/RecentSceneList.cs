@@ -61,11 +61,11 @@ namespace RecentSceneToolbar {
 		private List<string> m_List = new List<string>();
 
 		private string GetSceneName(int index) {
-			var guid = m_List[index];
-			var path = AssetDatabase.GUIDToAssetPath(guid);
+			string guid = m_List[index];
+			string path = AssetDatabase.GUIDToAssetPath(guid);
 			if (string.IsNullOrEmpty(path)) return null;
-			var name = Path.GetFileNameWithoutExtension(path);
-			return name;
+			string sceneName = Path.GetFileNameWithoutExtension(path);
+			return sceneName;
 		}
 
 		public void Add(Scene scene, bool setDirty = true) {
@@ -86,8 +86,8 @@ namespace RecentSceneToolbar {
 		}
 
 		public void LoadScene(int index) {
-			var guid = m_List[index];
-			var path = AssetDatabase.GUIDToAssetPath(guid);
+			string guid = m_List[index];
+			string path = AssetDatabase.GUIDToAssetPath(guid);
 			if (!PathIsValid(path)) return;
 			SwitchSceneHelper.StartScene(path);
 		}
@@ -97,7 +97,9 @@ namespace RecentSceneToolbar {
 		}
 
 		private bool PathIsValid(string path) {
-			if (string.IsNullOrEmpty(path)) return false;
+			if (string.IsNullOrEmpty(path)) {
+				return false;
+			}
 			return File.Exists(path);
 		}
 	}
