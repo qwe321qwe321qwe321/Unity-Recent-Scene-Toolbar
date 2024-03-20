@@ -42,7 +42,7 @@ namespace RecentSceneToolbar {
 			}
 			
 			
-			var plusButtonTex = EditorGUIUtility.IconContent(@"d_ol_plus_act").image;
+			var plusButtonTex = EditorGUIUtility.IconContent(@"Toolbar Plus").image;
 			if (GUILayout.Button(new GUIContent(null, plusButtonTex, $"Additively load recent scenes"), style)) {
 				PopupRecentScene(
 					(sceneIndex) => {
