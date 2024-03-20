@@ -41,7 +41,7 @@ namespace RecentSceneToolbar {
 					});
 			}
 
-#if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_4_OR_NEWER
 			var plusButtonTex = EditorGUIUtility.IconContent(@"d_ol_plus_act").image;
 #else
 			var plusButtonTex = EditorGUIUtility.IconContent(@"Toolbar Plus").image;
