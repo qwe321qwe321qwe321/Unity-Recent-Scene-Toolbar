@@ -40,9 +40,12 @@ namespace RecentSceneToolbar {
 						RecentSceneList.Instance.LoadScene(sceneIndex);
 					});
 			}
-			
-			
+
+#if UNITY_2019_1_OR_NEWER
 			var plusButtonTex = EditorGUIUtility.IconContent(@"d_ol_plus_act").image;
+#else
+			var plusButtonTex = EditorGUIUtility.IconContent(@"Toolbar Plus").image;
+#endif
 			if (GUILayout.Button(new GUIContent(null, plusButtonTex, $"Additively load recent scenes"), style)) {
 				PopupRecentScene(
 					(sceneIndex) => {
