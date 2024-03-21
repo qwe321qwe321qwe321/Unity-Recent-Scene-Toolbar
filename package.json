@@ -1,6 +1,6 @@
 {
     "name": "com.pedev.unity-recent-scene-toolbar",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "displayName": "Recent Scene Toolbar",
     "description": "Add Recent Scene button to open the recent scenes easily. (Additive-load supported)",
     "unity": "2020.1",
